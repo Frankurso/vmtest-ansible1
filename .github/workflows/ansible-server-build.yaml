@@ -1,0 +1,33 @@
+name: Build Azure VM with Terraform
+
+on: [push]
+
+jobs:
+  dsgAzureVMbuild:
+    runs-on: self-hosted
+    steps:
+    #- name: Deploy Stage
+    #  uses: fjogeleit/http-request-action@v1.14.0
+    #  with:
+    #    url: 'https://vra-01.dcsg.com'
+    #    method: 'POST'
+    #    username: 
+    #    password: 
+    #    customHeaders: '{"Content-Type": "application/json"}'
+    #    data: '{"key_1": "value_1", "key_2": "value_2"}'
+    #  - name: Hello world
+    #    run: |testing 123
+    #      hostname; ls -l; df -hP
+        # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    #- name: Setup Terraform
+    #  uses: hashicorp/setup-terraform@v1
+    #  with:
+    #    cli_config_credentials_token: pRHsWQOVWPXqaw.atlasv1.aiq2D7qFEx0hHSy4UrRhrcrELI25E1uyHu6zs2PyqekoY7ktNJjo9LiTDojze8lWu30
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+        # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Ansible VM Build
+      run: ansible -i dkhl1001, all -m shell -a 'ansible-playbook azure_create_vm.yml -e ansible_python_interpreter=/usr/bin/python3'                                                                               
